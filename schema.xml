@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<mysqldump xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<database name="smerkelblog_development">
+	<table_structure name="blogs">
+		<field Field="id" Type="int(11)" Null="NO" Key="PRI" Extra="auto_increment" Comment="" />
+		<field Field="name" Type="varchar(255)" Null="NO" Key="" Extra="" Comment="" />
+		<field Field="theme" Type="varchar(255)" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="users_id" Type="int(11)" Null="NO" Key="MUL" Extra="" Comment="" />
+		<key Table="blogs" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" />
+		<key Table="blogs" Non_unique="1" Key_name="index_blogs_on_users_id" Seq_in_index="1" Column_name="users_id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" />
+		<options Name="blogs" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="0" Avg_row_length="0" Data_length="16384" Max_data_length="0" Index_length="16384" Data_free="0" Auto_increment="1" Create_time="2016-03-20 19:37:42" Collation="utf8_unicode_ci" Create_options="" Comment="" />
+	</table_structure>
+	<table_structure name="comments">
+		<field Field="id" Type="int(11)" Null="NO" Key="PRI" Extra="auto_increment" Comment="" />
+		<field Field="title" Type="varchar(255)" Null="NO" Key="" Extra="" Comment="" />
+		<field Field="body" Type="text" Null="NO" Key="" Extra="" Comment="" />
+		<field Field="users_id" Type="int(11)" Null="NO" Key="MUL" Extra="" Comment="" />
+		<field Field="commentable_id" Type="int(11)" Null="NO" Key="MUL" Extra="" Comment="" />
+		<field Field="commentable_type" Type="varchar(255)" Null="NO" Key="" Default="post" Extra="" Comment="" />
+		<key Table="comments" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" />
+		<key Table="comments" Non_unique="1" Key_name="index_comments_on_users_id" Seq_in_index="1" Column_name="users_id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" />
+		<key Table="comments" Non_unique="1" Key_name="index_comments_on_commentable_id_and_commentable_type" Seq_in_index="1" Column_name="commentable_id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" />
+		<key Table="comments" Non_unique="1" Key_name="index_comments_on_commentable_id_and_commentable_type" Seq_in_index="2" Column_name="commentable_type" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" />
+		<options Name="comments" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="0" Avg_row_length="0" Data_length="16384" Max_data_length="0" Index_length="16384" Data_free="0" Auto_increment="1" Create_time="2016-03-20 19:38:11" Collation="utf8_unicode_ci" Create_options="" Comment="" />
+	</table_structure>
+	<table_structure name="posts">
+		<field Field="id" Type="int(11)" Null="NO" Key="PRI" Extra="auto_increment" Comment="" />
+		<field Field="title" Type="varchar(255)" Null="NO" Key="MUL" Extra="" Comment="" />
+		<field Field="body" Type="text" Null="NO" Key="" Extra="" Comment="" />
+		<field Field="users_id" Type="int(11)" Null="NO" Key="MUL" Extra="" Comment="" />
+		<field Field="blogs_id" Type="int(11)" Null="NO" Key="MUL" Extra="" Comment="" />
+		<key Table="posts" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" />
+		<key Table="posts" Non_unique="0" Key_name="index_posts_on_title_and_blogs_id" Seq_in_index="1" Column_name="title" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" />
+		<key Table="posts" Non_unique="0" Key_name="index_posts_on_title_and_blogs_id" Seq_in_index="2" Column_name="blogs_id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" />
+		<key Table="posts" Non_unique="1" Key_name="index_posts_on_users_id" Seq_in_index="1" Column_name="users_id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" />
+		<key Table="posts" Non_unique="1" Key_name="index_posts_on_blogs_id" Seq_in_index="1" Column_name="blogs_id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" />
+		<options Name="posts" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="0" Avg_row_length="0" Data_length="16384" Max_data_length="0" Index_length="32768" Data_free="0" Auto_increment="1" Create_time="2016-03-20 19:38:11" Collation="utf8_unicode_ci" Create_options="" Comment="" />
+	</table_structure>
+	<table_structure name="schema_migrations">
+		<field Field="version" Type="varchar(255)" Null="NO" Key="PRI" Extra="" Comment="" />
+		<key Table="schema_migrations" Non_unique="0" Key_name="unique_schema_migrations" Seq_in_index="1" Column_name="version" Collation="A" Cardinality="6" Null="" Index_type="BTREE" Comment="" Index_comment="" />
+		<options Name="schema_migrations" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="6" Avg_row_length="2730" Data_length="16384" Max_data_length="0" Index_length="0" Data_free="0" Create_time="2016-03-20 19:08:51" Update_time="2016-03-20 19:38:12" Collation="utf8_unicode_ci" Create_options="" Comment="" />
+	</table_structure>
+	<table_structure name="taggings">
+		<field Field="id" Type="int(11)" Null="NO" Key="PRI" Extra="auto_increment" Comment="" />
+		<field Field="tags_id" Type="int(11)" Null="NO" Key="MUL" Extra="" Comment="" />
+		<field Field="taggable_id" Type="int(11)" Null="NO" Key="MUL" Extra="" Comment="" />
+		<field Field="taggable_type" Type="varchar(255)" Null="NO" Key="" Extra="" Comment="" />
+		<key Table="taggings" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" />
+		<key Table="taggings" Non_unique="0" Key_name="index_taggings_on_tags_id_and_taggable_id_and_taggable_type" Seq_in_index="1" Column_name="tags_id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" />
+		<key Table="taggings" Non_unique="0" Key_name="index_taggings_on_tags_id_and_taggable_id_and_taggable_type" Seq_in_index="2" Column_name="taggable_id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" />
+		<key Table="taggings" Non_unique="0" Key_name="index_taggings_on_tags_id_and_taggable_id_and_taggable_type" Seq_in_index="3" Column_name="taggable_type" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" />
+		<key Table="taggings" Non_unique="1" Key_name="index_taggings_on_tags_id" Seq_in_index="1" Column_name="tags_id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" />
+		<key Table="taggings" Non_unique="1" Key_name="index_taggings_on_taggable_id_and_taggable_type" Seq_in_index="1" Column_name="taggable_id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" />
+		<key Table="taggings" Non_unique="1" Key_name="index_taggings_on_taggable_id_and_taggable_type" Seq_in_index="2" Column_name="taggable_type" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" />
+		<options Name="taggings" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="0" Avg_row_length="0" Data_length="16384" Max_data_length="0" Index_length="16384" Data_free="0" Auto_increment="1" Create_time="2016-03-20 19:38:12" Collation="utf8_unicode_ci" Create_options="" Comment="" />
+	</table_structure>
+	<table_structure name="tags">
+		<field Field="id" Type="int(11)" Null="NO" Key="PRI" Extra="auto_increment" Comment="" />
+		<field Field="name" Type="varchar(255)" Null="NO" Key="" Extra="" Comment="" />
+		<field Field="color" Type="varchar(255)" Null="YES" Key="" Default="#0000FF" Extra="" Comment="" />
+		<key Table="tags" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" />
+		<options Name="tags" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="0" Avg_row_length="0" Data_length="16384" Max_data_length="0" Index_length="0" Data_free="0" Auto_increment="1" Create_time="2016-03-20 19:38:12" Collation="utf8_unicode_ci" Create_options="" Comment="" />
+	</table_structure>
+	<table_structure name="users">
+		<field Field="id" Type="int(11)" Null="NO" Key="PRI" Extra="auto_increment" Comment="" />
+		<field Field="email" Type="varchar(255)" Null="NO" Key="" Extra="" Comment="" />
+		<field Field="password" Type="varchar(255)" Null="NO" Key="" Extra="" Comment="" />
+		<field Field="username" Type="varchar(255)" Null="NO" Key="" Extra="" Comment="" />
+		<key Table="users" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" />
+		<options Name="users" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="0" Avg_row_length="0" Data_length="16384" Max_data_length="0" Index_length="0" Data_free="0" Auto_increment="1" Create_time="2016-03-20 19:37:42" Collation="utf8_unicode_ci" Create_options="" Comment="" />
+	</table_structure>
+</database>
+</mysqldump>
