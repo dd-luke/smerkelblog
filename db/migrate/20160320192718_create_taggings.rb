@@ -1,7 +1,7 @@
 class CreateTaggings < ActiveRecord::Migration
   def change
     create_table :taggings do |t|
-      t.references :tag, null: false, index: :unique
+      t.references :tag, null: false, index: :true
       t.integer :taggable_id, null: false
       t.string :taggable_type, null: false
       t.index [:taggable_id, :taggable_type]

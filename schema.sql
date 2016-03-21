@@ -151,7 +151,7 @@ CREATE TABLE `taggings` (
 
 LOCK TABLES `taggings` WRITE;
 /*!40000 ALTER TABLE `taggings` DISABLE KEYS */;
-INSERT INTO `taggings` VALUES (1,1,1,'Blog'),(2,1,1,'Post');
+INSERT INTO `taggings` VALUES (1,2,1,'Blog'),(2,2,1,'Post');
 /*!40000 ALTER TABLE `taggings` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -167,8 +167,8 @@ CREATE TABLE `tags` (
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `color` varchar(255) COLLATE utf8_unicode_ci DEFAULT '#0000FF',
   PRIMARY KEY (`id`),
-  KEY `index_tags_on_name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  UNIQUE KEY `index_tags_on_name` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -177,7 +177,7 @@ CREATE TABLE `tags` (
 
 LOCK TABLES `tags` WRITE;
 /*!40000 ALTER TABLE `tags` DISABLE KEYS */;
-INSERT INTO `tags` VALUES (1,'cheese talk','#0000FF');
+INSERT INTO `tags` VALUES (2,'cheese talk','#0000FF');
 /*!40000 ALTER TABLE `tags` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -218,4 +218,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-03-20 16:39:48
+-- Dump completed on 2016-03-21  7:31:48

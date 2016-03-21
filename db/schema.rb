@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 20160320192718) do
     t.string "color", limit: 255, default: "#0000FF"
   end
 
-  add_index "tags", ["name"], name: "index_tags_on_name", using: :btree
+  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string "email",    limit: 255, null: false
