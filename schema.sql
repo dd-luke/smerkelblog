@@ -56,11 +56,11 @@ CREATE TABLE `comments` (
   `body` text COLLATE utf8_unicode_ci NOT NULL,
   `user_id` int(11) NOT NULL,
   `commentable_id` int(11) NOT NULL,
-  `commentable_type` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'post',
+  `commentable_type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `index_comments_on_user_id` (`user_id`),
   KEY `index_comments_on_commentable_id_and_commentable_type` (`commentable_id`,`commentable_type`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -69,7 +69,6 @@ CREATE TABLE `comments` (
 
 LOCK TABLES `comments` WRITE;
 /*!40000 ALTER TABLE `comments` DISABLE KEYS */;
-INSERT INTO `comments` VALUES (1,'This post stinks... like great cheese!','Such cheese.',2,1,'Post'),(2,'Thanks!','I\'m glad to have found a fellow cheese enthusiast.',2,1,'Comment');
 /*!40000 ALTER TABLE `comments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -90,7 +89,7 @@ CREATE TABLE `posts` (
   UNIQUE KEY `index_posts_on_title_and_blog_id` (`title`,`blog_id`),
   KEY `index_posts_on_user_id` (`user_id`),
   KEY `index_posts_on_blog_id` (`blog_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -99,7 +98,6 @@ CREATE TABLE `posts` (
 
 LOCK TABLES `posts` WRITE;
 /*!40000 ALTER TABLE `posts` DISABLE KEYS */;
-INSERT INTO `posts` VALUES (1,'Why didn\'t you tell me the cheese was so good?','You should\'ve told me!',2,1);
 /*!40000 ALTER TABLE `posts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -142,7 +140,7 @@ CREATE TABLE `taggings` (
   UNIQUE KEY `index_taggings_on_tag_id_and_taggable_id_and_taggable_type` (`tag_id`,`taggable_id`,`taggable_type`),
   KEY `index_taggings_on_tag_id` (`tag_id`),
   KEY `index_taggings_on_taggable_id_and_taggable_type` (`taggable_id`,`taggable_type`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -151,7 +149,6 @@ CREATE TABLE `taggings` (
 
 LOCK TABLES `taggings` WRITE;
 /*!40000 ALTER TABLE `taggings` DISABLE KEYS */;
-INSERT INTO `taggings` VALUES (1,2,1,'Blog'),(2,2,1,'Post');
 /*!40000 ALTER TABLE `taggings` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -168,7 +165,7 @@ CREATE TABLE `tags` (
   `color` varchar(255) COLLATE utf8_unicode_ci DEFAULT '#0000FF',
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_tags_on_name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -177,7 +174,6 @@ CREATE TABLE `tags` (
 
 LOCK TABLES `tags` WRITE;
 /*!40000 ALTER TABLE `tags` DISABLE KEYS */;
-INSERT INTO `tags` VALUES (2,'cheese talk','#0000FF');
 /*!40000 ALTER TABLE `tags` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -218,4 +214,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-03-21  7:31:48
+-- Dump completed on 2016-03-21  7:35:14
