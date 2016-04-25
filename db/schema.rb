@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160320192718) do
+ActiveRecord::Schema.define(version: 20160425133322) do
 
   create_table "blogs", force: :cascade do |t|
     t.string  "name",    limit: 255, null: false
@@ -43,6 +43,13 @@ ActiveRecord::Schema.define(version: 20160320192718) do
   add_index "posts", ["blog_id"], name: "index_posts_on_blog_id", using: :btree
   add_index "posts", ["title", "blog_id"], name: "index_posts_on_title_and_blog_id", unique: true, using: :btree
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
+
+  create_table "profiles", force: :cascade do |t|
+    t.string  "full_name", limit: 255
+    t.integer "user_id",   limit: 4,   null: false
+  end
+
+  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
 
   create_table "taggings", force: :cascade do |t|
     t.integer "tag_id",        limit: 4,   null: false

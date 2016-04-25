@@ -202,9 +202,29 @@ CREATE TABLE `users` (
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` VALUES (1,'dan.kleiman@drugdev.com','foobar','kleiman'),(2,'dan.murphy@drugdev.com','foobar','murph');
+INSERT INTO `users` 
+VALUES
+(3, 'test_1@test.com', 'foobar', 'test_1'),
+(4, 'test_2@test.com', 'foobar', 'test_2'),
+(5, 'test_3@test.com', 'foobar', 'test_3'),
+(6, 'test_4@test.com', 'foobar', 'test_4'),
+(7, 'test_5@test.com', 'foobar', 'test_5'),
+(8, 'test_6@test.com', 'foobar', 'test_6'),
+(9, 'test_7@test.com', 'foobar', 'test_7');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+LOCK TABLES `profiles` WRITE;
+INSERT INTO `profiles` VALUES (1, 'Dan Kleiman', 1),(2, 'Dan Murphy', 2);
+INSERT INTO `profiles`
+VALUES
+(3, 'Luke Song', 3),
+(4, 'Luke X Song', 4),
+(5, 'Song, Luke', 5),
+(6, 'Luke', 6),
+(7, 'Luke S', 7);
+UNLOCK TABLES;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
